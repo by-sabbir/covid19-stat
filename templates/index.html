@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{ name }}</title>
+{% endblock title %}
+
+{% block body %}
+  
+    <div class="container jumbotron">
+        <h1>WORKS?</h1>
+    </div>
+    <div class="image">
+        <img src="/plot.png" alt="china corona state">
+    </div>
+    <div class="container table" style="height: 300px;">
+        {{table | safe}}
+    </div>
+
+{% endblock body %}
+
