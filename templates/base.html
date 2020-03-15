@@ -11,13 +11,16 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href={{ url_for("static", filename="css/bootstrap.min.css")}}></link>
+  <link rel="stylesheet" href={{ url_for("static", filename="css/chart.css")}}></link>
   <script src={{ url_for("static", filename="js/plotly.js")}}></script>
-  <script src={{ url_for("static", filename="js/app.js")}}></script>
+  <script src={{ url_for("static", filename="js/chart.js")}}></script>
+  <script src={{ url_for("static", filename="js/axios.min.js")}}></script>
+  
 </head>
 
 <body>
   {% block body%}
-
+  
   {% endblock %}
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -26,6 +29,7 @@
   <script src={{ url_for("static", filename="js/popper.min.js")}}></script>
   <script src={{ url_for("static", filename="js/popper.min.js")}}></script>
   <script src={{ url_for("static", filename="js/bootstrap.min.js")}}></script>
+  <script src={{ url_for("static", filename="js/app.js")}}></script>
 </body>
 
 </html>

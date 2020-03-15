@@ -1,6 +1,8 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 import seaborn as sns
 import pandas as pd
 import locale
@@ -9,7 +11,7 @@ from locale import atof
 locale.setlocale(locale.LC_NUMERIC, '')
 sns.set_style("darkgrid")
 
-BASE_DIR = os.path.abspath(__file__)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 if not os.path.isdir(STATIC_DIR):
     os.makedirs(STATIC_DIR)
@@ -30,6 +32,14 @@ def fetch_data():
     return {"code": 404}
 
 
+def clear_session():
+    li = os.listdir(STATIC_DIR)
+    for each in li:
+        if "_stat" in each:
+            if os.path.exists(f"static/{each}"):
+                os.remove(f"static/{each}")
+
+
 def country_wise(name):
     df = fetch_data()
     try:
@@ -40,17 +50,18 @@ def country_wise(name):
     except IndexError:
         return "country not found"
     con.fillna(0, inplace=True)
-    print(con.iloc[0].values)
-    y = con.iloc[0].values.astype(np.int32)
+    y = con.iloc[0].values
     bar_plot = sns.barplot(x=con.columns, y=y)
     
     # sns.despine()
-    bar_plot.set_xticklabels(bar_plot.get_xticklabels(), rotation=30)
+    bar_plot.set_xticklabels(bar_plot.get_xticklabels(), rotation=15)
     bar_plot.set_yticklabels([])
     bar_plot.set_title(con_name)
     for p in bar_plot.patches:
         bar_plot.annotate(f"{int(p.get_height())}", (p.get_x() + p.get_width() / 2., p.get_height()), ha = 'center', va = 'center', xytext = (0, 10), textcoords = 'offset points')
     plt.savefig(os.path.join(STATIC_DIR, f"{con_name}_stat.png"))
+    return {"data": [int(i) for i in y],
+            "labels": [item for item in con.columns]}
 
 if __name__ == "__main__":
-    country_wise("germ")
+    print(country_wise("bang"))

@@ -1,20 +1,24 @@
-{% extends "base.html" %}
-
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <title>{{ name }}</title>
-{% endblock title %}
+{% endblock title %} {% block body %}
 
-{% block body %}
-  
-    <div class="container jumbotron">
-        <h1>WORKS?</h1>
-    </div>
-    <div class="image">
-        <img src="/plot.png" alt="china corona state">
-    </div>
-    <div class="container table" style="height: 300px;">
-        {{table | safe}}
-    </div>
+<div class="container jumbotron">
+  <h1>WORKS?</h1>
+</div>
+
+<div class="content">
+  <div class="wrapper">
+    <canvas
+      id="chart-0"
+      width="664"
+      height="332"
+      class="chartjs-render-monitor"
+      style="display: block; width: 664px; height: 332px;">
+    </canvas>
+  </div>
+</div>
+<div class="container table" style="height: 300px;">
+  {{table | safe}}
+</div>
 
 {% endblock body %}
-
