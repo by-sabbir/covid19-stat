@@ -48,7 +48,9 @@ def country_wise(name):
         con_name = data["Country"].values[0]
         # print(con_name.values[0])
     except IndexError:
-        return "country not found"
+            return {"data": [0, 0, 0, 0, 0, 0],
+            "labels": [0, 0, 0, 0, 0, 0],
+            "country":"Not Found"}
     con.fillna(0, inplace=True)
     y = con.iloc[0].values
     bar_plot = sns.barplot(x=con.columns, y=y)
@@ -61,7 +63,8 @@ def country_wise(name):
         bar_plot.annotate(f"{int(p.get_height())}", (p.get_x() + p.get_width() / 2., p.get_height()), ha = 'center', va = 'center', xytext = (0, 10), textcoords = 'offset points')
     plt.savefig(os.path.join(STATIC_DIR, f"{con_name}_stat.png"))
     return {"data": [int(i) for i in y],
-            "labels": [item for item in con.columns]}
+            "labels": [item for item in con.columns],
+            "country":con_name}
 
 if __name__ == "__main__":
     print(country_wise("bang"))
