@@ -1,0 +1,48 @@
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-block-start: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: 500;
+    line-height: 0.7;
+  }
+  h5 {
+    text-align: right;
+    text-align: right;
+    margin-right: 165px;
+    color: gray;
+  }
+  
+  .head {
+    margin-top: 70px;
+    margin-bottom: 100px;
+    align-content: flex-end;
+  }
+  
+  .tablecontainer { width: 500px; overflow; hidden;}
+  tr {display: block; }
+  th, td { width: 300px; }
+  tbody { display: block; height: 200px; overflow: auto;}
+  
+  #indexPlot {
+      display: block;
+  }
+  
+  .worldstate {
+  }
+  .canvascontainer {
+      margin-right: auto;
+  }
+  
+  .tablecontainer {
+  
+  }
+  
+  .searchcontainer {
+      width: 700px;
+      margin-top: 70px;
+  }
+  .c-class{
+      color: honeydew;
+  }

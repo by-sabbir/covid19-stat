@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "env/bin/python",
+    "python.pythonPath": "/home/ipd/miniconda3/bin/python",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }

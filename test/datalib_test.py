@@ -14,8 +14,8 @@ if not os.path.isdir(STATIC_DIR):
     os.makedirs(STATIC_DIR)
 
 
-def fetch_data(html_text):
-    df = pd.read_html(html_text)[0]
+def fetch_data(url):
+    df = pd.read_html(url)[0]
 #     df = pd.read_csv("static/corona.csv", index_col=False)
     if len(df.columns) >= 8:
         df.drop(df.columns.values[-1], axis=1, inplace=True)
@@ -31,11 +31,11 @@ def fetch_data(html_text):
     return None
 
 
-def world_stat(url="https://www.worldometers.info/coronavirus/"):
+def world_stat():
     header = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
               "X-Requested-With": "XMLHttpRequest"
             }
-    res = r.get(url, headers=header)
+    res = r.get("https://www.worldometers.info/coronavirus/", headers=header)
     df = fetch_data(res.text)
     if df is None:
         print("NO DATASET! CHECK URL")
@@ -48,14 +48,14 @@ def world_stat(url="https://www.worldometers.info/coronavirus/"):
     data = {"Country": country,
         "ActivePatient": activePatient,
         "Recovered": recovered,
-        "RecoveryRate": recoveryRate.apply(lambda x: round(x)),
-        "DeathRate": deathRate.apply(lambda x: round(x))}
+        "RecoveryRate": recoveryRate,
+        "DeathRate": deathRate}
     
     work = pd.DataFrame(data)
     fresh = work[work["ActivePatient"] > 0][ work["RecoveryRate"] > 0]
-    sort_by_RR = fresh.sort_values("RecoveryRate", ascending=0, ignore_index=True)
+    sort_by_RR = fresh.sort_values("RecoveryRate", ascending=0)
     return sort_by_RR
 
 
 if __name__ == "__main__":
-    world_stat("germ")
+    country_wise("germ")

@@ -2,23 +2,36 @@
 <title>{{ name }}</title>
 {% endblock title %} {% block body %}
 
-<div class="container jumbotron">
-  <h1>WORKS?</h1>
+<div class="container head">
+  <h1 class="title">Panic is not An Option For COVID-19</h1>
+  <h5 class="subtitle">An Engineer's Approach</h5>
 </div>
-
-<div class="content">
-  <div class="wrapper">
-    <canvas
-      id="chart-0"
-      width="664"
-      height="332"
-      class="chartjs-render-monitor"
-      style="display: block; width: 664px; height: 332px;">
-    </canvas>
+<div class="worldstate container">
+  <div class="row">
+    <div class="canvascontainer order-1">
+      <canvas id="indexPlot" width="500px" height="250px"></canvas>
+    </div>
+    <div class="tablecontainer order-2">
+      <div class="table">
+        {{table | safe}}
+      </div>
+    </div>
   </div>
 </div>
-<div class="container table" style="height: 300px;">
-  {{table | safe}}
+<!-- search field -->
+<div class="container searchcontainer">
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Learn about your country"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary c-class">Search</button>
+    </div>
+  </form>
 </div>
 
 {% endblock body %}
