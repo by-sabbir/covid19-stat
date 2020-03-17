@@ -14,8 +14,16 @@ if not os.path.isdir(STATIC_DIR):
     os.makedirs(STATIC_DIR)
 
 
-def fetch_data(html_text):
-    # df = pd.read_html(html_text)[0]
+def update_dataset(url="https://www.worldometers.info/coronavirus/"):
+    header = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
+              "X-Requested-With": "XMLHttpRequest"
+            }
+    res = r.get(url, headers=header)
+    df = pd.read_html(res.text)[0]
+    df.to_csv(os.path.join(STATIC_DIR, "corona.csv"), index=False)
+
+
+def fetch_data():
     df = pd.read_csv("static/corona.csv", index_col=False)
     if len(df.columns) >= 8:
         df.drop(df.columns.values[-1], axis=1, inplace=True)
@@ -31,18 +39,12 @@ def fetch_data(html_text):
     return None
 
 
-def world_stat(url="https://www.worldometers.info/coronavirus/"):
-    # header = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
-    #           "X-Requested-With": "XMLHttpRequest"
-    #         }
-    # res = r.get(url, headers=header)
-    df = fetch_data("res.text")
+def world_stat():
+    df = fetch_data()
     if df is None:
         print("NO DATASET! CHECK URL")
         return
     
-    # workdf = df.sort_values("Cases", ascending=0).head(30)
-    # extracting data by combining datasets
     country, activePatient, recovered, recoveryRate, deathRate = df["Country"], df["ActivePatients"], df["Recovered"], (df["Recovered"] / df["Cases"]) * 100, (df["Deaths"]/ df["Cases"]) * 100
     
     data = {"Country": country,
@@ -57,6 +59,18 @@ def world_stat(url="https://www.worldometers.info/coronavirus/"):
     return sort_by_RR
 
 
+def country_list():
+    df = fetch_data()
+    return list(df["Country"].to_dict().values())
+
+
+def search_by_country(name):
+    country = name
+    
+    
+
+
 if __name__ == "__main__":
-    world_stat("germ")
+    # update_dataset()
+    print(country_list())    
 
