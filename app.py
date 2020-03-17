@@ -10,8 +10,9 @@ app = Flask(__name__)
 def index():
     url = "https://www.worldometers.info/coronavirus/#countries"
     data = datalib.world_stat(url)
-    return render_template("index.html", name="Corona State", table = data.to_html(), col_names=data.columns.values)
+    return render_template("index.html", name="Corona State", table = data.to_html(index=False), col_names=data.columns.values)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+0

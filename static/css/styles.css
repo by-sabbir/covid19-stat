@@ -1,48 +1,76 @@
 h1 {
-    text-align: center;
-    font-size: 3em;
-    margin-block-start: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: 500;
-    line-height: 0.7;
-  }
-  h5 {
-    text-align: right;
-    text-align: right;
-    margin-right: 165px;
-    color: gray;
-  }
-  
-  .head {
-    margin-top: 70px;
-    margin-bottom: 100px;
-    align-content: flex-end;
-  }
-  
-  .tablecontainer { width: 500px; overflow; hidden;}
-  tr {display: block; }
-  th, td { width: 300px; }
-  tbody { display: block; height: 200px; overflow: auto;}
-  
-  #indexPlot {
-      display: block;
-  }
-  
-  .worldstate {
-  }
-  .canvascontainer {
-      margin-right: auto;
-  }
-  
-  .tablecontainer {
-  
-  }
-  
-  .searchcontainer {
-      width: 700px;
-      margin-top: 70px;
-  }
-  .c-class{
-      color: honeydew;
-  }
+  text-align: center;
+  font-size: 3em;
+  margin-block-start: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: 500;
+  line-height: 0.7;
+}
+h5 {
+  text-align: right;
+  text-align: right;
+  margin-right: 165px;
+  color: gray;
+}
+
+.head {
+  margin-top: 70px;
+  margin-bottom: 100px;
+  align-content: flex-end;
+}
+
+.dataframe {
+  width: 600px !important;
+  height: 300px;
+  color: rgba(29, 29, 29, 0.788) !important;
+  display: block;
+  overflow: auto;
+  border: gainsboro;
+  border-radius: 1em;
+}
+
+#indexPlot {
+  display: block;
+}
+
+.worldstate {
+  width: fit-content;
+  align-items: center;
+  margin: auto;
+}
+.canvascontainer {
+  margin-right: 15px;
+}
+
+.tablecontainer {
+  margin-left: 15px;
+}
+
+.searchcontainer {
+  width: 700px;
+  margin-top: 70px;
+}
+.c-class {
+  background-color: rgba(17, 227, 255, 0.904) !important;
+  border: 1px solid #02daf0f2 !important;
+  color: black !important;
+  width: 100px !important;
+  border-radius: 1.2rem !important;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 33px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #02daf0f2;
+  border-radius: 5.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
