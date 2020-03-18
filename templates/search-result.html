@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block title %}
+<title>{{ name }}</title>
+{% endblock title %} 
+
+{% block body %}
+
+    <div class="container head">
+        <h1 style="margin-bottom: 5%;">You searched for <strong>{{ searched_item }}</strong></h1>
+        <div class="container">
+            {% if ser <= 10 %}
+            <div class="alert alert-danger" role="alert">
+                <h3> <strong>You are in top 10 effected country, Stay Safe!</strong>Serial {{ser}}</h3>
+            </div>
+            {% elif ser <= 50 %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>You are in top 50 effected country!</strong> Please be safe, Serial {{ser}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% else %}
+            <div class="alert alert-warning" role="alert">
+                <h3> Based on Active Patient's count {{searched_item}} is {{ser}}th</h3>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="canvascontainer order-1">
+            <canvas id="con{{ser}}" width="600px" height="300px"></canvas>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-outline-primary" style="width: 19%; margin-top: 2%" onclick="document.location.replace('/');"> Home </button>
+    </div>
+    <script>
+        var ctx = document.getElementById("con{{ser}}").getContext("2d");
+        var myChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: {{ plot_labels | safe }},
+            datasets: [
+              {
+                label: "COVID-19 {{searched_item}} Stat",
+                data: {{ plot_values }},
+                backgroundColor: [
+                    "rgba(75, 192, 192, .71)"
+                ],
+                borderColor: [
+                    "rgba(255, 206, 86, 0.2)"
+                ],
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }
+              ]
+            }
+          }
+          
+        });
+      </script>
+{% endblock body %} 

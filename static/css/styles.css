@@ -74,3 +74,16 @@ h5 {
   border-radius: 5.25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.centerhv {
+  color: gainsboro;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+span {
+  color: rgb(10, 214, 187);
+}
