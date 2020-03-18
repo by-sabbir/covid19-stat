@@ -83,8 +83,5 @@ def search_by_country(name):
     
 
 if __name__ == "__main__":
-    # update_dataset()
-    print(country_list())
-    print(world_stat())    
-    print(search_by_country("india"))
-
+    update_dataset()
+    
