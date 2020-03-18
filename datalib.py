@@ -56,7 +56,7 @@ def world_stat():
     
     work = pd.DataFrame(data)
     fresh = work[work["ActivePatient"] > 0][ work["RecoveryRate"] > 0]
-    sort_by_RR = fresh.sort_values("RecoveryRate", ascending=0)
+    sort_by_RR = fresh.sort_values("ActivePatient", ascending=0)
     plot_data = df.drop('Country', axis=1).sum()
     plot_data["DeathRate(%)"] = plot_data["Deaths"] / plot_data["Cases"] * 100
     return {"table": sort_by_RR, "plot": plot_data.sort_values()}
