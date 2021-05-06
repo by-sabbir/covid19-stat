@@ -11,7 +11,7 @@ dash-renderer==1.2.4
 dash-table==4.6.1
 Flask==1.1.1
 Flask-Compress==1.4.0
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 future==0.18.2
 html5lib==1.0.1
 idna==2.9
